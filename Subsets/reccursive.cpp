@@ -10,6 +10,9 @@ void print(vector<int>&arr){
     cout<<"]"<<endl;
 }
 
+// TC : O(2^N)
+// SC : O(N)stack + O(2^N)subsets
+
 void recc(vector<int>arr,vector<int>temp,int i,int n){
     if(i>=n){
         print(temp);

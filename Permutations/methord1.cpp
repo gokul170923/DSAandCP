@@ -1,6 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// TC : O(N!*N)
+// SC : O(N)stack +O(N)map + O(N!)permutations
+
 void recc(vector<int>&arr,vector<int>visited,vector<vector<int>>&permutes,vector<int>temp){
     if(temp.size()==arr.size()){
         permutes.push_back(temp);
@@ -15,7 +18,6 @@ void recc(vector<int>&arr,vector<int>visited,vector<vector<int>>&permutes,vector
         visited[i]=0;
 
     }
-
 
 }
 
