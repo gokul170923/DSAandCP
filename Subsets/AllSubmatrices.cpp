@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+// n^6
 void printSubmatrices(vector<vector<int>>& arr) {
     
     int n = arr.size(),m = arr[0].size();
