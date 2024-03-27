@@ -1,0 +1,4 @@
+https://leetcode.com/problems/is-graph-bipartite/description/
+
+ODD CYCLE LENGTH
+THE BASIC IDEA IS SAME AS CYCLE DETECTION ( ADJACENT NODES CANT HAVE SAME GROUPS) 
