@@ -1,0 +1,64 @@
+https://www.hackerearth.com/practice/math/number-theory/basic-number-theory-1/tutorial/
+//  (10^9 + 7) is a prime 
+    to avoid great numbers
+    x % m = 0.... m - 1
+
+MODULAR PROPERTIES :-
+
+    1. ADDITION :- (a + b) % m  = (a % m + b % m) % m;
+                   (a + b + c) % m = ((a % m + b % m) % m + c % m) % m;
+    
+    2. SUBTRACTION :- (a - b) % m = (a % m - b % m) % m 
+                    for cpp modulus od negative is wrong so use
+                    (a % m - b % m + m) % m;
+                    // (9 - 12) % 7 =  -3 but actully -3 % 7 == 4
+    
+
+    3. MULTIPLICATION :- (a * b) % m = (a % m * b % m) % m;
+
+    4. EXPONENTIATION :- (a ^ b) % m = (a * a * a * .......) % m;
+
+    5. DIVISION :- complicated
+       since ( a / b ) != ( ( a % m ) / ( b % m ) ) %m
+
+       we can use ->
+       (a / b) % m = ( a * (b)^-1 )%m   = ( a%m  * (b)^-1 %m ) % m
+       where (b)^-1 , is the multiplicative modulo inverse of b and m.
+
+
+
+
+
+----->soon
+    
+    // 7 * (1 / 7) = 1
+
+    // x * (y) % m = 1
+    // m = 7
+    // x = 3
+    // y = 1, x * y = 3 % 7 = 3
+    // y = 2, x * y = 6 % 7 = 6
+    // y = 3, 9 = 2
+    // y = 5, x * y = 15 % 7 = 1
+    // x = 3, modulo inverse of x^(-1) = y = 5
+
+    // a / b % m = a * (1 / b) = a * (b)^-1
+    // when m is prime
+
+    // fermat's little theroem
+    // inverse of (x) = pow(x, m - 2);
+    // x = 3
+    // 3 ^ (5) = 243 % 7 = 5
+
+    // a / b % m = a * inverse_modulo(b) % m
+
+    // 15 / 89 % 17 = 15 * inverse_modulo(89) % 17 = 15 * pow(89, 15) % 17;
+
+    // count probability of when this happens
+    // 1400 / 3289 % m = 1400 * inverse_modulo(3289, m - 2) % m;
+
+    // Euler's Totient function - can be used when not prime
+
+    // a % m = a, m are co-prime = gcd = 1
+
+

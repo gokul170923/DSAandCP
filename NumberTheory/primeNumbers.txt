@@ -1,0 +1,121 @@
+COMPUTE PRIME NUMBERS
+
+
+//**********************************************************************************
+    --> check if prime is number or not the brute way
+        counting number of divisors = 2
+
+    int n;
+    int div = 0;
+    for(int i = 1; i <= n; i++) {
+        if(n % i == 0) div++;
+    }
+    if(div == 2) {
+        // prime
+    }
+    // TC --> O(n)
+
+
+
+
+
+//**********************************************************************************
+    --> if i divides so  n / i also divides n
+        sqrt(n)
+        i * (n / i) = n
+
+    auto countDivisors = [](int n) {
+        int div = 0;
+        for(int i = 1; i * i <= n; i++) {
+            if(n % i == 0) {
+                div++;
+                if(i != n / i) {
+                    div++;
+                }
+            }
+        }
+        return div;
+    };
+
+    //  TC--> O(sqrt(n))
+
+    // counting divisors of all the numbers from 1 to n
+    for(int i = 1; i <= n; i++) {
+        int divisors = countDivisors(i);
+    }
+    // O(n * sqrt(n))
+
+
+
+
+// ***********************************************************************************
+    --> the count of divisors of all numbers from 1 to n 
+        can be done in O( n * log(n) )
+
+    vector<int> divCnt(n + 1, 0);
+    for(int i = 1; i <= n; i++) {
+        for(int j = i; j <= n; j += i) {
+            divCnt[j]++;
+        }
+    }
+    /*  eg :-
+        n = 6
+        [0, 0, 0, 0, 0, 0]
+        i = 1, j = 1, 2, 3, 4, 5, 6
+        [1, 1, 1, 1, 1, 1]
+
+        i = 2, j = 2, 4, 6
+        [1, 2, 1, 2, 1, 2] so on...
+
+
+    APROXIMATED PROOF
+        n + n / 2 + n / 3 + n / 4 + n / 5 + n / 6 + n / 7 ......
+        upper bound :- 
+        n + (n / 2 + n / 2) + (n / 4 + n / 4 + n / 4 + n / 4) +....
+        n +    (n) +               (n)
+        n * log(n)
+    */
+
+
+
+
+//*************************************************************************************
+
+    --> sieve of eratosthenes can be done in O( n * log( log( n ) ) )
+        find all prime numbers from 1 to n
+        find all divisors, if divCnt == 2 => prime
+
+
+
+
+    vector<bool> isPrime(n + 1, true);
+    isPrime[0] = isPrime[1] = false;
+
+    for(int i = 1; i <= n; i++) {
+        // exit if number id not prime becuase it is already visited before 
+        if( isPrime[i] == false) continue;
+        // we are here, this means i is a prime
+        for(int j = i + i; j <= n; j += i) {
+            isPrime[j] = false;
+        }
+    }
+
+
+    /* eg:-
+
+        n = 10 initially
+        [false, false, true, true, true, true, true, true, true, true, true]
+
+        i = 2, j = 4, 6, 8, 10
+        //    0      1     2     3    4      5      6      7     8     9     10
+        // [false, false, true, true, false, true, false, true, false, true, false]
+
+        i = 3, j = 6, 9
+        //    0      1     2     3    4      5      6      7     8     9     10
+        // [false, false, true, true, false, true, false, true, false, false, false]
+
+        TC :-
+            O( n * log( log( n ) ) )
+
+    */
+
