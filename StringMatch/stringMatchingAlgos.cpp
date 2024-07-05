@@ -23,8 +23,7 @@
 using namespace std;
 
 int brute(string s,string t){
-    int ans =-1 , n = s.size();
-    int m = t.size();
+    int n = s.size() , m = t.size();
     for(int i=0;i<=n-m;i++){
         int j=0;
         while(j<m && s[j+i]==t[j]) j++;
@@ -48,15 +47,12 @@ int rabin_carp(string s,string t){
         }
         if(i-j+1==m && rollhash ==hashofx){
             int k=0;
-            while(k<m){
-                if(s[k+j]!=t[k]) break;
+            while(k<m && s[k+j]==t[k]){
                 k++;
             }
-            if(k==m) return j;
-            
+            if(k==m) return j; 
         }
     }
-    
     return -1;
 
 }
