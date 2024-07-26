@@ -32,3 +32,6 @@ int gcdi(int a,int b){
 
 
 TC : - O(log(n)), n = max(a, b)
+
+
+--> gcd( lcm(a,b) , lcm(a,c) ) =  lcm( a , gcd(b,c))
