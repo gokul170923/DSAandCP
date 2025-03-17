@@ -3,7 +3,7 @@ using namespace std;
 
 class SegmentTree{
 public:
-    int n,ln;
+    int n,ln; // total , power
     vector<long long>arr;
     
     SegmentTree(int m,vector<int>&a){ // init 
